@@ -1,0 +1,82 @@
+{
+	"compiler": {
+		"version": "0.8.4+commit.c7e474f2"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "getMaxRange",
+				"outputs": [
+					{
+						"internalType": "uint32",
+						"name": "",
+						"type": "uint32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_lotteryId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "_requestId",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_randomNumber",
+						"type": "uint256"
+					}
+				],
+				"name": "numbersDrawn",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"lottery/ILottery.sol": "ILottery"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"lottery/ILottery.sol": {
+			"keccak256": "0xa8cc4fa244736173ec0b1c7eab27a0b2fedd56484117eeb7ca2552af78770b95",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://5701ba9f18cbc8c6c25ff795bb2358fb2147b7c71561bbcf69696ade0fe75062",
+				"dweb:/ipfs/QmSXSrrt4isXLpBXjeAf7P7Sq6yzdTmAikayZDeBbVHwko"
+			]
+		}
+	},
+	"version": 1
+}

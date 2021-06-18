@@ -1,0 +1,55 @@
+{
+	"compiler": {
+		"version": "0.8.4+commit.c7e474f2"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"details": "Helper contract to support initializer functions. To use it, replace the constructor with a function that has the `initializer` modifier. WARNING: Unlike constructors, initializer functions must be manually invoked. This applies both to deploying an Initializable contract, as well as extending an Initializable contract via inheritance. WARNING: When used with inheritance, manual care must be taken to not invoke a parent initializer twice, or ensure that all initializers are idempotent, because this is not dealt with automatically as with constructors.",
+			"kind": "dev",
+			"methods": {},
+			"stateVariables": {
+				"initialized": {
+					"details": "Indicates that the contract has been initialized."
+				},
+				"initializing": {
+					"details": "Indicates that the contract is in the process of being initialized."
+				}
+			},
+			"title": "Initializable",
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"lottery/Initializable.sol": "Initializable"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"lottery/Initializable.sol": {
+			"keccak256": "0xc45996dcf7dd258e184cb049c85f66213e4494b3dbc376e91acd57de9135f68f",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://c4accd6cacd1cdeea85609222cabda9ec107b1aa07ca84b8b5186e2c8775202f",
+				"dweb:/ipfs/QmVFUZrS58hF1tfr4cu8Gzc6UKwqQogWS83dMYEA129uov"
+			]
+		}
+	},
+	"version": 1
+}

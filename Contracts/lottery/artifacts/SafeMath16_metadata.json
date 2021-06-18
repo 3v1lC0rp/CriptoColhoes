@@ -1,0 +1,46 @@
+{
+	"compiler": {
+		"version": "0.8.4+commit.c7e474f2"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"details": "Wrappers over Solidity's arithmetic operations with added overflow checks. Arithmetic operations in Solidity wrap on overflow. This can easily result in bugs, because programmers usually assume that an overflow raises an error, which is the standard behavior in high level programming languages. `SafeMath` restores this intuition by reverting the transaction when an operation overflows. Using this library instead of the unchecked operations eliminates an entire class of bugs, so it's recommended to use it always. This library is a version of Open Zeppelin's SafeMath, modified to support unsigned 32 bit integers.",
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"lottery/SafeMath16.sol": "SafeMath16"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"lottery/SafeMath16.sol": {
+			"keccak256": "0xbfd40f607a47e85b2b76280e1b5f83eadc6ba9323cc5c0ba2f3e01b1ef032cee",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://2a3c45d25844cd81ab3251a79dcb99a9aca374a849adc988515dda68ae65d71c",
+				"dweb:/ipfs/Qmd4BMtzGb7fcZPG3fmGmoHUEhNyhf4yDHBUF7YJYvF6Pe"
+			]
+		}
+	},
+	"version": 1
+}

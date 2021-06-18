@@ -1,0 +1,36 @@
+{
+	"compiler": {
+		"version": "0.4.26+commit.4563c3fc"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"methods": {}
+		},
+		"userdoc": {
+			"methods": {}
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"lottery/Address.sol": "Address"
+		},
+		"evmVersion": "byzantium",
+		"libraries": {},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"lottery/Address.sol": {
+			"keccak256": "0xb1193550a612441ac49e44576568dc5888acfdb6d472ba1c5e571d4bf81fbaad",
+			"urls": [
+				"bzzr://93d1eecf0de30c687123d4e92c1ec90b374055a4fee85dc252cf7cdf4be14837"
+			]
+		}
+	},
+	"version": 1
+}

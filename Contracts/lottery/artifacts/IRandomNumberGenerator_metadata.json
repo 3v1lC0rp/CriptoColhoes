@@ -1,0 +1,74 @@
+{
+	"compiler": {
+		"version": "0.8.1+commit.df193b15"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "lotteryId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "userProvidedSeed",
+						"type": "uint256"
+					}
+				],
+				"name": "getRandomNumber",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "requestId",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"getRandomNumber(uint256,uint256)": {
+					"notice": "Requests randomness from a user-provided seed"
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"lottery/IRandomNumberGenerator.sol": "IRandomNumberGenerator"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"lottery/IRandomNumberGenerator.sol": {
+			"keccak256": "0x7d5b21f1b43b6a79c604fefc7b2482806ed0e4d3e22f7d382b31abaf663c464d",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://95dfd19365342a921147d1978023d6ace00e6cf7bacac9c0f4c0edf6a1a78d99",
+				"dweb:/ipfs/QmTR3JPDuvtYkkQRQTFKNwC8Fpmrfwx2TkWppfsnmtqh9T"
+			]
+		}
+	},
+	"version": 1
+}

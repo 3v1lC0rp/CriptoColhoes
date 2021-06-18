@@ -1,0 +1,121 @@
+{
+	"compiler": {
+		"version": "0.8.4+commit.c7e474f2"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "getCurrentTime",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "time",
+						"type": "uint256"
+					}
+				],
+				"name": "setCurrentTime",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "timerAddress",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"constructor": {
+					"params": {
+						"_timerAddress": "Contract that stores the current time in a testing environment. Must be set to 0x0 for production environments that use live time."
+					}
+				},
+				"getCurrentTime()": {
+					"returns": {
+						"_0": "uint for the current Testable timestamp."
+					}
+				},
+				"setCurrentTime(uint256)": {
+					"details": "Will revert if not running in test mode.",
+					"params": {
+						"time": "timestamp to set current Testable time to."
+					}
+				}
+			},
+			"title": "Base class that provides time overrides, but only if being run in test mode.",
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"constructor": {
+					"notice": "Constructs the Testable contract. Called by child contracts."
+				},
+				"getCurrentTime()": {
+					"notice": "Gets the current time. Will return the last time set in `setCurrentTime` if running in test mode. Otherwise, it will return the block timestamp."
+				},
+				"setCurrentTime(uint256)": {
+					"notice": "Sets the current time."
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"lottery/Testable.sol": "Testable"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"lottery/Testable.sol": {
+			"keccak256": "0xf8132c85fc9d7c6af46094093259a09fb44f75cde2d7e75a1c748cb491705afa",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://9dc38dcffd9274db81633a9931bc72610364b2f7bfb6f95684afdb2a1ccf56a6",
+				"dweb:/ipfs/QmNScXegsspX1PakfVWAdEnZq2XcmK9EtxNjdo55KdAXf2"
+			]
+		},
+		"lottery/Timer.sol": {
+			"keccak256": "0x378f52d59402d41cb33b147310fd7cea23595573a1f63023b563d2a89caece61",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://c77fe588064ad00949cfea2bb8517647ff8cc02f94f466c4dcb40a3d8ef464ae",
+				"dweb:/ipfs/QmWMNykJ1jbD6WiXXZf7rBkXmGGQEQHWvjU1MV4Uex1Zmu"
+			]
+		}
+	},
+	"version": 1
+}

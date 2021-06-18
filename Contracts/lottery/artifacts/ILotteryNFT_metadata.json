@@ -1,0 +1,169 @@
+{
+	"compiler": {
+		"version": "0.8.4+commit.c7e474f2"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_to",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_lottoID",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint8",
+						"name": "_numberOfTickets",
+						"type": "uint8"
+					}
+				],
+				"name": "batchMint",
+				"outputs": [
+					{
+						"internalType": "uint256[]",
+						"name": "",
+						"type": "uint256[]"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_ticketId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_lotteryId",
+						"type": "uint256"
+					}
+				],
+				"name": "claimTicket",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_ticketID",
+						"type": "uint256"
+					}
+				],
+				"name": "getOwnerOfTicket",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_ticketID",
+						"type": "uint256"
+					}
+				],
+				"name": "getTicketClaimStatus",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_ticketID",
+						"type": "uint256"
+					}
+				],
+				"name": "getTicketNumbers",
+				"outputs": [
+					{
+						"internalType": "uint16[]",
+						"name": "",
+						"type": "uint16[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getTotalSupply",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"lottery/ILotteryNFT.sol": "ILotteryNFT"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"lottery/ILotteryNFT.sol": {
+			"keccak256": "0xca4b8b6e68ce023d4121a5e13fb2c6f6d58a8d2b5b5f4c8e6bd2d049c5be1d42",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://17de04a27b24a4fd17b364c5a9a386e42ae2ac4dbf4d2428423665b22e271123",
+				"dweb:/ipfs/QmVsUVTKDcLi7d91u5GLDG1A7MziXDbUbbGonb5u6cTjxf"
+			]
+		}
+	},
+	"version": 1
+}
