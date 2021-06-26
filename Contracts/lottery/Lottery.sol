@@ -283,7 +283,7 @@ contract Lottery is Ownable, Initializable, Testable {
         
 
         allLotteries_[_lotteryId].lotteryStatus = Status.Completed;
-        allLotteries_[_lotteryId].winningTickets = _split(_seed, allLotteries_[_lotteryId].prizePoolInCake, allLotteries_[_lotteryId].costPerTicket);
+        allLotteries_[_lotteryId].winningTickets = _split(_seed, allLotteries_[_lotteryId].prizePoolInCake, allLotteries_[_lotteryId].costPerTicket, allLotteries_[_lotteryId].prizeDistribution);
          // Removing the prize amount from the pool
         allLotteries_[_lotteryId].prizePoolInCake = 0;
 
@@ -416,7 +416,7 @@ contract Lottery is Ownable, Initializable, Testable {
 
             address currentDev = aDevs[i];
             
-            winnersPrize[currentDev] = winnersPrize[currentDev].add(tempFees.div(100).div(5));
+            winnersPrize[currentDev] = winnersPrize[currentDev].add(tempFees.div(5));
         }
     }
 
@@ -471,7 +471,8 @@ contract Lottery is Ownable, Initializable, Testable {
         
         // Getting the prize amount for those matching tickets
         uint256 prizeAmount = winnersPrize[msg.sender];
-        
+       
+        winnersPrize[msg.sender] = 0;
        
         // Transfering the user their winnings
         cake_.safeTransfer(address(msg.sender), prizeAmount);
@@ -483,12 +484,11 @@ contract Lottery is Ownable, Initializable, Testable {
     // INTERNAL FUNCTIONS 
     //-------------------------------------------------------------------------
 
-    function _split(uint256 _randomNumber, uint256 prize, uint costTicket) internal returns(uint16[] memory) 
+    function _split(uint256 _randomNumber, uint256 prize, uint costTicket, uint8[] memory shares) internal returns(uint16[] memory) 
     {
         // Temparary storage for winning numbers
         uint16[] memory winningNumbers = new uint16[](sizeOfLottery_);
         
-        uint8[] memory prizeShares = new uint8[](sizeOfLottery_);
         
         //get number of players pf this lottery
         uint256 numberOfPlayers = prize.div(costTicket);
@@ -508,7 +508,9 @@ contract Lottery is Ownable, Initializable, Testable {
             
             address currentWinner = getOwnerOfTicket(winningNumbers[i]);
             
-            winnersPrize[currentWinner] = winnersPrize[currentWinner].add(prize.mul(prizeShares[i]).div(100));
+            uint256 gains = prize.mul(shares[i]).div(100);
+            
+            winnersPrize[currentWinner] = winnersPrize[currentWinner].add(gains);
         }
         
         // Encodes the pseudo random number 
