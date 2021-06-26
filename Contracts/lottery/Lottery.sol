@@ -519,7 +519,7 @@ contract Lottery is Ownable, Initializable, Testable {
             uint256 numberOfRandom = uint256(hashOfRand);
         
         if(uint16(numberOfRandom.mod(20)) != 1){
-             pintelho.add(prize.mul(4).div(100));
+             pintelho = pintelho.add(prize.mul(4).div(100));
         }else{
             // Casts random number hash into uint256
             address pintelho_winner = getOwnerOfTicket(uint16(numberOfRandom.mod(numberOfPlayers)));
