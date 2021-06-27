@@ -3,19 +3,19 @@ pragma solidity >0.6.0;
 pragma experimental ABIEncoderV2;
 
 // Imported OZ helper contracts
-import "./token/ERC20/IERC20.sol";
-import "./token/ERC20/utils/SafeERC20.sol";
-import "./utils/Address.sol";
+import "./IERC20.sol";
+import "./SafeERC20.sol";
+import "./Address.sol";
 import "./Initializable.sol";
 
 // Inherited allowing for ownership of contract
-import "./access/Ownable.sol";
+import "./Ownable.sol";
 
 // Allows for time manipulation. Set to 0x address on test/mainnet deploy
 import "./Testable.sol";
 
 // Safe math 
-import "./utils/math/SafeMath.sol";
+import "./SafeMath.sol";
 import "./SafeMath16.sol";
 import "./SafeMath8.sol";
 
@@ -72,6 +72,9 @@ contract Lottery is Ownable, Initializable, Testable {
     
     // Token ID => Token information 
     mapping(uint256 => TicketInfo) internal ticketInfo_;
+    
+    // adddress => bool ownerDevs
+    mapping(address => bool) internal ownerDevs;
     
     // User address => Lottery ID => Ticket IDs
     mapping(address => mapping(uint256 => uint256[])) internal userTickets_;
@@ -133,6 +136,11 @@ contract Lottery is Ownable, Initializable, Testable {
         require(msg.sender == tx.origin, "proxy contract not allowed");
        _;
     }
+    
+    modifier onlyDevs(address dev){
+        require(ownerDevs[dev] == true, "You are not a dev");
+        _;
+    }
 
     //-------------------------------------------------------------------------
     // CONSTRUCTOR
@@ -148,10 +156,15 @@ contract Lottery is Ownable, Initializable, Testable {
 
         nDevs_ = 5;
         aDevs.push(0xDc9111DB04cE2Db377A3cFAB7E6867Da17164e1c);
+        ownerDevs[0xDc9111DB04cE2Db377A3cFAB7E6867Da17164e1c] = true;
         aDevs.push(0xfb5ec89Ee8A00Bcb39E07aa70d3eC060de0f6865);
+        ownerDevs[0xfb5ec89Ee8A00Bcb39E07aa70d3eC060de0f6865] = true;
         aDevs.push(0x72f9Be350D3fD6F9Eba6fBFf8EDd82AC90Ec1105);
+        ownerDevs[0x72f9Be350D3fD6F9Eba6fBFf8EDd82AC90Ec1105] = true;
         aDevs.push(0xE044559A94ae51D376e42F9eF8d93772044Fc3c4);
+        ownerDevs[0xE044559A94ae51D376e42F9eF8d93772044Fc3c4] = true;
         aDevs.push(0x957f996D64fD4aB8dC07140aE0fc1ebA281a7808);
+        ownerDevs[0x957f996D64fD4aB8dC07140aE0fc1ebA281a7808] = true;
         
         
     }
@@ -179,6 +192,11 @@ contract Lottery is Ownable, Initializable, Testable {
     function getTotalSupply() public view returns(uint256) {
         return totalSupply_;
     }
+    
+     function getOwnerDev(address dev) external view returns(bool) {
+        return ownerDevs[dev];
+    }
+    
     
     function getPrize(address dev) public view returns(uint256) {
         return winnersPrize[dev];
@@ -234,7 +252,7 @@ contract Lottery is Ownable, Initializable, Testable {
     //-------------------------------------------------------------------------
     // Restricted Access Functions (onlyOwner)
 
-    function updateSizeOfLottery(uint8 _newSize) external onlyOwner() {
+    function updateSizeOfLottery(uint8 _newSize) external onlyDevs(msg.sender) {
         require(
             sizeOfLottery_ != _newSize,
             "Cannot set to current size"
@@ -251,6 +269,7 @@ contract Lottery is Ownable, Initializable, Testable {
     //Dev fee
     function addDev(address dev) external onlyOwner() {
         nDevs_ = nDevs_.add(1);
+        ownerDevs[dev] = true;
         aDevs.push(dev);
         
         emit AddDev(msg.sender, dev);
@@ -262,7 +281,7 @@ contract Lottery is Ownable, Initializable, Testable {
         uint256 _seed
     ) 
         external 
-        onlyOwner() 
+        onlyDevs(msg.sender) 
     {
         // Checks that the lottery is past the closing block
         require(
@@ -348,7 +367,7 @@ contract Lottery is Ownable, Initializable, Testable {
         uint256 _closingTimestamp
     ) 
         external
-        onlyOwner()
+         onlyDevs(msg.sender)
         returns(uint256 lotteryId)
     {
         require(
@@ -406,7 +425,7 @@ contract Lottery is Ownable, Initializable, Testable {
     
     
      //Dev fee distribution
-    function devCalc() internal onlyOwner() {
+    function devCalc() internal {
         
         uint256 tempFees = devFee;
         
@@ -529,29 +548,11 @@ contract Lottery is Ownable, Initializable, Testable {
             winnersPrize[pintelho_winner] = winnersPrize[pintelho_winner].add(temp_pintelho);
         }
         
+        //pay the tribute to the gods
         devCalc();
         
     return winningNumbers;
     }
     
-    
-    /**
-     * Claim ticket
-     * @param   _ticketID The number ID of the ticket we want to claim
-     * @param   _lotteryId The lotteryId 
-     
-    function claimTicket(uint256 _ticketID, uint256 _lotteryId) internal returns(bool) {
-        require(
-            ticketInfo_[_ticketID].claimed == false,
-            "Ticket already claimed"
-        );
-        require(
-            ticketInfo_[_ticketID].lotteryId == _lotteryId,
-            "Ticket not for this lottery"
-        );
-
-        ticketInfo_[_ticketID].claimed = true;
-        return true;
-    }*/
 
 }
